@@ -1,0 +1,36 @@
+<div th:fragment="content">
+    <div class="content">
+        <h2 class="text-center mb-4">Quản lý đơn hàng</h2>
+        <div class="d-flex justify-content-between mb-3">
+            <input type="text" id="search" class="form-control w-25" placeholder="Tìm kiếm đơn hàng...">
+            <a href="/don-hang/add" class="btn btn-success"> Thêm đơn hàng</a>
+        </div>
+        <div class="table-container">
+            <table class="table table-bordered text-center">
+                <thead class="table-dark">
+                <tr>
+                    <th>Mã đơn hàng</th>
+                    <th>Khách hàng</th>
+                    <th>Ngày đặt hàng</th>
+                    <th>Trạng thái</th>
+                    <th>Tổng tiền</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="donHang : ${donHangs}">
+                    <td th:text="${donHang.maDonHang}"></td>
+                    <td th:text="${donHang.khachHang.tenKH}"></td>
+                    <td th:text="${donHang.ngayDatHang}"></td>
+                    <td th:text="${donHang.trangThai}"></td>
+                    <td th:text="${donHang.tongTien}"></td>
+                    <td>
+                        <a th:href="@{/don-hang/edit/{id}(id=${donHang.maDonHang})}" class="btn btn-warning btn-sm">Sửa</a>
+                        <a th:href="@{/don-hang/xoa/{id}(id=${donHang.maDonHang})}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

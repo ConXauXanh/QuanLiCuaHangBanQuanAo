@@ -1,0 +1,35 @@
+<div th:fragment="content">
+    <div class="container mt-4">
+        <div class="form-container">
+            <h2 th:text="${khachHang.maKH != null ? 'Sửa Khách Hàng' : 'Thêm Khách Hàng'}"></h2>
+            <form th:action="@{/khach-hang/save}" th:object="${khachHang}" method="post">
+
+                <input type="hidden" th:field="*{maKH}"/>
+
+                <div class="mb-3">
+                    <label class="form-label">Tên KH:</label>
+                    <input type="text" th:field="*{tenKH}" class="form-control" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Email:</label>
+                    <input type="email" th:field="*{email}" class="form-control" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Số điện thoại:</label>
+                    <input type="text" th:field="*{sdt}" class="form-control" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Địa chỉ:</label>
+                    <input type="text" th:field="*{diaChi}" class="form-control" required/>
+                </div>
+
+                <button type="submit" class="btn btn-primary" th:text="${khachHang.maKH == null} ? 'Thêm mới' : 'Cập nhật'"></button>
+                <a href="/khach-hang/hien-thi" class="btn btn-secondary">Hủy</a>
+            </form>
+
+        </div>
+    </div>
+</div>

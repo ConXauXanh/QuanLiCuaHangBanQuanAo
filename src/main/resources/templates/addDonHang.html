@@ -1,0 +1,39 @@
+<div th:fragment="content">
+    <div class="container mt-4">
+        <div class="form-container">
+            <h2 th:text="${donHang.maDonHang == null} ? 'Thêm đơn hàng' : 'Chỉnh sửa đơn hàng'"></h2>
+            <form th:action="@{/don-hang/save}" th:object="${donHang}" method="post">
+                <input type="hidden" th:field="*{maDonHang}"/> <!-- Ẩn mã đơn hàng nếu cập nhật -->
+
+                <div class="mb-3">
+                    <label class="form-label">Khách hàng:</label>
+                    <select th:field="*{khachHang}" class="form-control" required>
+                        <option value="" disabled selected>Chọn khách hàng</option>
+                        <option th:each="khachHang : ${khachHangList}"
+                                th:value="${khachHang.maKH}"
+                                th:text="${khachHang.tenKH}">
+                        </option>
+                    </select>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Ngày đặt hàng:</label>
+                    <input type="date" th:field="*{ngayDatHang}" class="form-control" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Trạng thái:</label>
+                    <input type="text" th:field="*{trangThai}" class="form-control" required/>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label">Tổng tiền:</label>
+                    <input type="number" th:field="*{tongTien}" class="form-control" required/>
+                </div>
+
+                <button type="submit" class="btn btn-primary" th:text="${donHang.maDonHang == null} ? 'Thêm mới' : 'Cập nhật'"></button>
+            </form>
+            <a href="/don-hang/hien-thi" class="btn btn-secondary mt-3">Quay lại danh sách</a>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,36 @@
+<div th:fragment="content">
+    <div class="content">
+        <h2 class="text-center mb-4">Quản lý nhân viên</h2>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <input type="text" id="search" class="form-control w-25" placeholder="Tìm kiếm nhân viên...">
+            <a href="/nhan-vien/add" class="btn btn-success"> Thêm nhân viên</a>
+        </div>
+        <div class="table-container">
+            <table class="table table-bordered text-center">
+                <thead class="table-dark">
+                <tr>
+                    <th>Mã nhân viên</th>
+                    <th>Tên nhân viên</th>
+                    <th>Sđt nhân viên</th>
+                    <th>Email nhân viên</th>
+                    <th>Chức vụ</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="nv, iterStat : ${nhanviens}">
+                    <td th:text="${iterStat.index + 1}"></td>
+                    <td th:text="${nv.tenNV}"></td>
+                    <td th:text="${nv.sdt}"></td>
+                    <td th:text="${nv.email}"></td>
+                    <td th:text="${nv.chucVu}"></td>
+                    <td>
+                        <a th:href="@{/nhan-vien/edit/{id}(id=${nv.maNV})}" class="btn btn-warning btn-sm">Sửa</a>
+                        <a th:href="@{/nhan-vien/delete/{id}(id=${nv.maNV})}" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa?');">Xóa</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

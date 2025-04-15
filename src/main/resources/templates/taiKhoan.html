@@ -1,0 +1,78 @@
+<div style="margin-left: -28px" th:fragment="content" class="container-fluid mt-3">
+    <div class="mb-4">
+        <h2 class="text-center">Quản lý tài khoản & Phân quyền</h2>
+    </div>
+
+    <!-- Bảng hiển thị danh sách tài khoản -->
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h3>Danh sách tài khoản</h3>
+        </div>
+        <div class="card-body">
+            <table class="table table-striped table-bordered">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Vai trò</th>
+                    <th>Nhân viên</th>
+                    <th>Hành động</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- Hiển thị danh sách tài khoản từ server -->
+                <tr th:each="user : ${users}">
+                    <td th:text="${user.idUser}"></td>
+                    <td th:text="${user.username}"></td>
+                    <td th:text="${user.role}"></td>
+                    <td th:text="${user.nhanVien.tenNV}"></td>
+                    <td>
+                        <!-- Nếu role là Admin thì làm mờ nút "Xóa" -->
+                        <a th:if="${user.role != 'Admin'}"
+                           th:href="@{/tai-khoan/delete/{id}(id=${user.idUser})}"
+                           class="btn btn-danger btn-sm">Xóa</a>
+                        <!-- Nếu role là Admin thì chỉ hiển thị "Không thể xóa" -->
+                        <span th:if="${user.role == 'Admin'}"
+                              class="text-muted">Không thể xóa</span>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Form đăng ký tài khoản -->
+    <div class="card">
+        <div class="card-header bg-dark text-white">
+            <h3>Đăng ký tài khoản mới</h3>
+        </div>
+        <div class="card-body">
+            <form th:action="@{/tai-khoan/add}" method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input type="text" id="username" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input type="password" id="password" name="password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Vai trò:</label>
+                    <select id="role" name="role" class="form-select">
+                        <option value="Admin">Quản lý</option>
+                        <option value="NhanVien">Nhân viên</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="maNhanVien" class="form-label">Nhân viên:</label>
+                    <select id="maNhanVien" name="maNhanVien" class="form-select" required>
+                        <option th:each="nv : ${nhanViens}" th:value="${nv.maNV}" th:text="${nv.tenNV}"></option>
+                    </select>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-primary">Đăng ký</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

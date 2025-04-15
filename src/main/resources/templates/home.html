@@ -1,0 +1,51 @@
+<div th:fragment="content">
+    <div class="content">
+        <!-- Banner Section -->
+        <section class="banner bg-dark text-white text-center py-5">
+            <div class="container">
+                <h1>Chào mừng đến với Shop Quần Áo Nữ</h1>
+                <p>Khám phá bộ sưu tập thời trang mới nhất</p>
+                <a href="/listSanPham" class="btn btn-primary">Xem Sản Phẩm</a>
+            </div>
+        </section>
+
+        <!-- Featured Products Section -->
+        <section class="featured-products py-5">
+            <div class="container">
+                <h2 class="text-center mb-4">Sản Phẩm Nổi Bật</h2>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img th:src="@{/images/img.png}" class="card-img-top" alt="Sản phẩm 1">
+                            <div class="card-body">
+                                <h5 class="card-title">Áo Thun Nữ</h5>
+                                <p class="card-text">Mô tả về áo thun nữ chất liệu cotton thoáng mát.</p>
+                                <a href="/product/1" class="btn btn-primary">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img th:src="@{/images/img_3.png}" class="card-img-top" alt="Sản phẩm 2">
+                            <div class="card-body">
+                                <h5 class="card-title">Váy Xòe Nữ</h5>
+                                <p class="card-text">Váy xòe sang trọng, phù hợp cho các dịp lễ hội.</p>
+                                <a href="/product/2" class="btn btn-primary">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card">
+                            <img th:src="@{/images/img_4.png}" class="card-img-top" alt="Sản phẩm 3">
+                            <div class="card-body">
+                                <h5 class="card-title">Đầm Công Sở</h5>
+                                <p class="card-text">Đầm công sở thanh lịch và chuyên nghiệp.</p>
+                                <a href="/product/3" class="btn btn-primary">Xem Chi Tiết</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
