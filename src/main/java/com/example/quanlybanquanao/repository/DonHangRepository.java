@@ -14,9 +14,11 @@ import java.util.List;
 @Repository
 public interface DonHangRepository extends JpaRepository<DonHang, Integer> {
 
+    // tinh tong
     @Query("SELECT SUM(d.tongTien) FROM DonHang d WHERE d.ngayDatHang BETWEEN :startDate AND :endDate")
     BigDecimal calculateRevenue(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 
+    // loc don hang theo khoang ngay
     @Query("SELECT d FROM DonHang d WHERE d.ngayDatHang BETWEEN :startDate AND :endDate")
     List<DonHang> getOrdersByDateRange(@Param("startDate") LocalDate startDate, @Param("endDate") LocalDate endDate);
 }

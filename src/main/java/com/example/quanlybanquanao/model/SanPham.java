@@ -33,6 +33,6 @@ public class SanPham {
     @Column(name = "SoLuongTon")
     private int soLuongTon;
 
-    @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ChiTietDonHang> chiTietDonHangs;
+//    @OneToMany(mappedBy = "sanPham", cascade = CascadeType.ALL, orphanRemoval = true)
+//    private List<ChiTietDonHang> chiTietDonHangs;
 }

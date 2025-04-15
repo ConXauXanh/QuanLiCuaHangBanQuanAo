@@ -58,4 +58,9 @@ public class UserService {
         return userRepository.save(user); // Lưu tài khoản mới
     }
 
+    public void delete(Integer id){
+        userRepository.deleteById(id);
+    }
+
+
 }
